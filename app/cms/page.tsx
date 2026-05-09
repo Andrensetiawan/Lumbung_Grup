@@ -21,6 +21,7 @@ export default async function CmsPage() {
       initialHome={cmsData.home}
       initialAbout={cmsData.about}
       initialPartnersPage={cmsData.partnersPage}
+      initialGallery={cmsData.gallery}
       updatedAt={cmsData.updatedAt}
     />
   );

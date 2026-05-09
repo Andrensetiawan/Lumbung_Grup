@@ -41,8 +41,9 @@ export default function AboutPageClient({ content }: Props) {
 
   return (
     <>
-      <section className="relative bg-white py-24">
-        <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:grid-cols-2 lg:items-center">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-24">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-20 px-6 lg:grid-cols-2 lg:items-center">
           <div>
             <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.4em] text-emerald-700">
               {resolveLocalizedText(content.aboutBadge, locale)}
@@ -106,7 +107,8 @@ export default function AboutPageClient({ content }: Props) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#f5efe6] py-20">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-white/50" aria-hidden />
         <div
           className="absolute inset-y-6 left-1/2 w-[min(1120px,calc(100%-3rem))] -translate-x-1/2 overflow-hidden rounded-[2.5rem] shadow-2xl"
           style={{
@@ -145,8 +147,9 @@ export default function AboutPageClient({ content }: Props) {
         </div>
       </section>
 
-      <section className="relative bg-emerald-50 py-24">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-24">
+        <div className="absolute inset-0 bg-white/50" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="text-center">
             <span className="mb-4 inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-[9px] font-black uppercase tracking-[0.4em] text-emerald-700">
               {resolveLocalizedText(content.machineBadge, locale)}
@@ -192,8 +195,9 @@ export default function AboutPageClient({ content }: Props) {
         </div>
       </section>
 
-      <section className="relative bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-20">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="text-center">
             <span className="mb-4 inline-flex items-center justify-center rounded-full bg-emerald-50 px-5 py-2 text-[9px] font-black uppercase tracking-[0.4em] text-emerald-700">
               {resolveLocalizedText(content.qcBadge, locale)}

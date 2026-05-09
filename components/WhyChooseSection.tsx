@@ -241,8 +241,9 @@ export default function WhyChooseSection() {
   const activeSuccessSlide = localizedSuccessSlides[activeSuccessIndex];
 
   return (
-    <section className="relative bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+    <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20">
+      <div className="absolute inset-0 bg-white/50" aria-hidden />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
         {/* Header */}
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-4 inline-block rounded-full bg-emerald-50 px-5 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-emerald-700">

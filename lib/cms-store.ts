@@ -8,6 +8,7 @@ import { PRODUCTS as defaultProducts, type Product } from "./data/products";
 import { DEFAULT_HOME_CONTENT, type HomePageContent } from "./data/home";
 import { DEFAULT_ABOUT_CONTENT, type AboutPageContent } from "./data/about";
 import { DEFAULT_PARTNERS_PAGE_CONTENT, type PartnersPageContent } from "./data/partners-page";
+import { DEFAULT_GALLERY_CONTENT, type GalleryPageContent } from "./data/gallery";
 
 interface CmsData {
   products: Product[];
@@ -15,6 +16,7 @@ interface CmsData {
   home: HomePageContent;
   about: AboutPageContent;
   partnersPage: PartnersPageContent;
+  gallery: GalleryPageContent;
   updatedAt: string;
 }
 
@@ -28,6 +30,7 @@ function getDefaultCmsData(): CmsData {
     home: DEFAULT_HOME_CONTENT,
     about: DEFAULT_ABOUT_CONTENT,
     partnersPage: DEFAULT_PARTNERS_PAGE_CONTENT,
+    gallery: DEFAULT_GALLERY_CONTENT,
     updatedAt: new Date().toISOString(),
   };
 }
@@ -75,6 +78,10 @@ function isValidPartnersPageContent(value: unknown): value is PartnersPageConten
   return !!value && typeof value === "object";
 }
 
+function isValidGalleryContent(value: unknown): value is GalleryPageContent {
+  return !!value && typeof value === "object" && Array.isArray((value as any).categories);
+}
+
 async function readCmsDataFromFile(): Promise<CmsData> {
   try {
     const raw = await readFile(cmsFilePath, "utf8");
@@ -90,6 +97,7 @@ async function readCmsDataFromFile(): Promise<CmsData> {
       home: isValidHomeContent(parsed.home) ? parsed.home : DEFAULT_HOME_CONTENT,
       about: isValidAboutContent(parsed.about) ? parsed.about : DEFAULT_ABOUT_CONTENT,
       partnersPage: isValidPartnersPageContent(parsed.partnersPage) ? parsed.partnersPage : DEFAULT_PARTNERS_PAGE_CONTENT,
+      gallery: isValidGalleryContent(parsed.gallery) ? parsed.gallery : DEFAULT_GALLERY_CONTENT,
       updatedAt: parsed.updatedAt ?? new Date().toISOString(),
     };
   } catch {
@@ -112,6 +120,7 @@ export async function saveCmsData(input: {
   home: HomePageContent;
   about: AboutPageContent;
   partnersPage: PartnersPageContent;
+  gallery: GalleryPageContent;
 }): Promise<CmsData> {
   const nextData: CmsData = {
     products: input.products,
@@ -119,6 +128,7 @@ export async function saveCmsData(input: {
     home: input.home,
     about: input.about,
     partnersPage: input.partnersPage,
+    gallery: input.gallery,
     updatedAt: new Date().toISOString(),
   };
 

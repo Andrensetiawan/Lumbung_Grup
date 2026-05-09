@@ -443,5 +443,319 @@
       "videoLayout": "alternate"
     }
   },
-  "updatedAt": "2026-04-22T14:33:27.764Z"
+  "about": {
+    "aboutBadge": {
+      "id": "TENTANG PERUSAHAAN",
+      "en": "ABOUT THE COMPANY"
+    },
+    "companyName": {
+      "id": "PT Niaga Multi Pangan",
+      "en": "PT Niaga Multi Pangan"
+    },
+    "paragraphs": [
+      {
+        "id": "PT Niaga Multi Pangan merupakan perusahaan nasional yang bergerak di bidang perdagangan dan distribusi produk pangan. Perusahaan ini mulai aktif beroperasi pada tahun 2020, dengan fokus utama pada penyediaan beras berkualitas bagi pasar Indonesia.",
+        "en": "PT Niaga Multi Pangan is an Indonesian company focused on food trading and distribution, operating since 2020 with a primary focus on quality rice supply."
+      },
+      {
+        "id": "Pada tahap awal, PT Niaga Multi Pangan memulai kegiatan usahanya dengan menyuplai beras ke berbagai supermarket, sebagai upaya menghadirkan produk beras berkualitas yang mudah dijangkau oleh masyarakat.",
+        "en": "In the early stage, the company supplied rice to supermarkets and later expanded to HORECA and Japanese restaurants requiring high quality standards."
+      },
+      {
+        "id": "PT Niaga Multi Pangan juga merupakan distributor tunggal pemegang hak merek untuk beras khusus KYOHIKARI serta produk makanan Jepang premium dengan merek HIKARU. Dengan dukungan tim profesional, etika kerja yang kuat, serta komitmen terhadap kualitas dan keunggulan produk, perusahaan terus berupaya memberikan pelayanan terbaik demi tercapainya kepuasan pelanggan.",
+        "en": "PT Niaga Multi Pangan is also the exclusive rights holder and distributor for KYOHIKARI specialty rice and premium Japanese food products under HIKARU. With professional team support, strong work ethics, and commitment to product quality and excellence, the company continuously strives to deliver the best service for customer satisfaction."
+      }
+    ],
+    "award": {
+      "id": "Hanya butiran terbaik yang masuk ke kemasan kami.",
+      "en": "Only the best grains make it into our packaging."
+    },
+    "vision": {
+      "id": "Visi",
+      "en": "Vision"
+    },
+    "visionTitle": {
+      "id": "mendukung program ketahanan dan kedaulatan pangan nasional",
+      "en": "Supporting National Food Security and Sovereignty"
+    },
+    "visionDesc": {
+      "id": "Kami berkomitmen untuk menjadi bagian penting dalam menjaga stabilitas pasokan pangan berkualitas bagi masyarakat Indonesia.",
+      "en": "We are committed to playing a key role in maintaining stable access to quality food supply in Indonesia."
+    },
+    "mission": {
+      "id": "Misi",
+      "en": "Mission"
+    },
+    "missionTitle": {
+      "id": "berfokus pada penyediaan produk berkualitas, efisiensi rantai pasok dan peningkatan nilai tambah",
+      "en": "Focused on quality products, supply-chain efficiency, and added value"
+    },
+    "missionList": [
+      {
+        "id": "Penyediaan produk berkualitas",
+        "en": "Deliver quality products"
+      },
+      {
+        "id": "Efisiensi rantai pasok",
+        "en": "Optimize supply-chain efficiency"
+      },
+      {
+        "id": "Peningkatan nilai tambah",
+        "en": "Create added value"
+      }
+    ],
+    "machineBadge": {
+      "id": "Alat & Mesin",
+      "en": "Equipment & Machines"
+    },
+    "machineTitle": {
+      "id": "Infrastruktur Produksi PT Niaga Multi Pangan",
+      "en": "PT Niaga Multi Pangan Production Infrastructure"
+    },
+    "machineDesc": {
+      "id": "Setiap batch Kyohikari dan Hikaru melalui rangkaian mesin modern agar hasil sortir bersih, pengemasan cepat, dan standar higienitas tetap konsisten.",
+      "en": "Each Kyohikari and Hikaru batch passes through a modern processing chain for clean sorting and consistent hygiene standards."
+    },
+    "machine1Subtitle": {
+      "id": "Untuk proses produksi beras",
+      "en": "For rice production process"
+    },
+    "machine1Desc": {
+      "id": "Menggunakan mesin sortir terbaik di kelasnya untuk menjaga konsistensi warna dan kualitas beras.",
+      "en": "Uses top-class sorting technology to maintain color consistency and grain quality."
+    },
+    "machine2Subtitle": {
+      "id": "Menjaga presisi filling",
+      "en": "Maintaining filling precision"
+    },
+    "machine2Desc": {
+      "id": "Unit timbang otomatis yang mengukur berat beras secara akurat dan konsisten demi efisiensi lini pengemasan.",
+      "en": "Automatic weighing unit that measures rice weight accurately for efficient packaging lines."
+    },
+    "qcBadge": {
+      "id": "Quality Control Roadmap",
+      "en": "Quality Control Roadmap"
+    },
+    "qcTitle": {
+      "id": "QC multi-layer untuk batch Kyohikari & Hikaru",
+      "en": "Multi-layer QC for Kyohikari & Hikaru batches"
+    },
+    "qcDesc": {
+      "id": "Setiap tahap tercatat di lembar QC digital sehingga partner tinggal meminta log untuk audit internal.",
+      "en": "Each stage is recorded in digital QC logs for transparent internal audits."
+    },
+    "qc1": {
+      "id": "Setiap panen diuji kadar air dan broken rice menggunakan moisture meter industri.",
+      "en": "Each harvest is tested for moisture and broken-rice ratio using industry-grade tools."
+    },
+    "qc2": {
+      "id": "Sensor RGB dan UV menolak butir rusak sehingga head rice ratio terjaga.",
+      "en": "RGB and UV sensors reject damaged grains to maintain head-rice ratio."
+    },
+    "qc3": {
+      "id": "Magnetic trap dan x-ray sampling harian menjauhkan kontaminan logam.",
+      "en": "Magnetic trap and daily x-ray sampling reduce contamination risk."
+    },
+    "qc4": {
+      "id": "Sertifikat analisa (COA) diterbitkan untuk setiap batch sebelum distribusi.",
+      "en": "Certificate of Analysis (COA) is issued for each batch before distribution."
+    },
+    "highlight1": {
+      "id": "Mulai Beroperasi",
+      "en": "Operating Since"
+    },
+    "highlight2": {
+      "id": "Quality Control",
+      "en": "Quality Control"
+    }
+  },
+  "partnersPage": {
+    "heroBadge": {
+      "id": "Kemitraan Strategis",
+      "en": "Strategic Partnership"
+    },
+    "heroTitle": {
+      "id": "Lebih dari 38 Provinsi",
+      "en": "Our Partners Across Indonesia"
+    },
+    "heroDesc": {
+      "id": "Dipercaya oleh Restoran Premium dan Retailer Modern",
+      "en": "Trusted by premium restaurants, five-star hotels, modern retailers, and professional distributors in more than 38 provinces."
+    },
+    "statPartners": {
+      "id": "Mitra Utama",
+      "en": "Key Partners"
+    },
+    "statProvince": {
+      "id": "Provinsi",
+      "en": "Provinces"
+    },
+    "statSatisfaction": {
+      "id": "Kepuasan",
+      "en": "Satisfaction"
+    },
+    "statSupport": {
+      "id": "Support",
+      "en": "Support"
+    },
+    "sectionTitle": {
+      "id": "Jaringan Mitra Terpercaya",
+      "en": "Trusted Partner Network"
+    },
+    "sectionDesc": {
+      "id": "Dipercaya oleh restoran premium, hotel bintang lima, retailer modern, dan distributor profesional di lebih dari 38 provinsi.",
+      "en": "Our partners span industries from premium hospitality to modern retail, all committed to top quality."
+    },
+    "voiceBadge": {
+      "id": "Client Voice",
+      "en": "Client Voice"
+    },
+    "voiceTitle": {
+      "id": "Apa Kata Mitra Kami",
+      "en": "What Our Partners Say"
+    },
+    "voiceDesc": {
+      "id": "Testimoni langsung dari procurement manager dan head chef yang telah bermitra dengan NMP.",
+      "en": "Direct testimonials from procurement managers and head chefs partnering with NMP."
+    },
+    "benefitsTitle": {
+      "id": "Mengapa Bergabung dengan NMP?",
+      "en": "Why Join NMP?"
+    },
+    "benefitsDesc": {
+      "id": "Kami menawarkan lebih dari sekadar produk - kami adalah partner dalam kesuksesan Anda.",
+      "en": "We offer more than products - we are your growth partner."
+    },
+    "ctaTitle": {
+      "id": "Ingin Menjadi Mitra NMP?",
+      "en": "Interested in Partnering with NMP?"
+    },
+    "ctaDesc": {
+      "id": "Hubungi tim partnership kami untuk diskusi peluang kolaborasi yang saling menguntungkan.",
+      "en": "Contact our partnership team to discuss mutually beneficial collaboration opportunities."
+    },
+    "ctaButton": {
+      "id": "Hubungi Kami via WhatsApp",
+      "en": "Contact Us via WhatsApp"
+    }
+  },
+  "gallery": {
+    "categories": [
+      {
+        "id": "facilities",
+        "title": "Facilities & Warehouse",
+        "description": "Modern warehouse with temperature-controlled systems",
+        "images": [
+          {
+            "src": "/gallery/facilities-warehouse/foto-gudang-terbaru.jpeg",
+            "alt": "Foto gudang terbaru - pagar hitam"
+          },
+          {
+            "src": "/gallery/facilities-warehouse/Warehouse facility - bahan baku digudang.jpg",
+            "alt": "Foto bahan baku di gudang"
+          },
+          {
+            "src": "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku.jpg",
+            "alt": "Foto stok bahan baku"
+          }
+        ]
+      },
+      {
+        "id": "quality-control",
+        "title": "Quality Control",
+        "description": "24/7 inspection and quality-testing process",
+        "images": [
+          {
+            "src": "/gallery/quality-control/machine-color-sorter.png",
+            "alt": "Color sorting machine"
+          },
+          {
+            "src": "/gallery/quality-control/machine-color-sorter-1.png",
+            "alt": "Rice sorting process"
+          },
+          {
+            "src": "/gallery/quality-control/machine-cdcs25.png",
+            "alt": "CDCS25 automatic weighing machine"
+          },
+          {
+            "src": "/gallery/quality-control/machine-shifter.png",
+            "alt": "Shifter machine for quality control"
+          }
+        ]
+      },
+      {
+        "id": "partnership",
+        "title": "Customer Warehouse Visit",
+        "description": "Documentation of customer warehouse visits and partnership activities",
+        "images": [
+          {
+            "src": "/gallery/customer-warehouse-visit/Customer warehouse visit - dinas pangan.jpg",
+            "alt": "Customer warehouse visit with dinas pangan"
+          },
+          {
+            "src": "/gallery/customer-warehouse-visit/Customer warehouse visit- marugame.jpg",
+            "alt": "Customer warehouse visit with Marugame"
+          },
+          {
+            "src": "/gallery/customer-warehouse-visit/Customer warehouse wisit-sushi tei. Jpg.jpg",
+            "alt": "Customer warehouse visit with Sushi Tei"
+          }
+        ]
+      },
+      {
+        "id": "events",
+        "title": "Events & Training",
+        "description": "Workshops, cooking demos, and exhibitions",
+        "images": [
+          {
+            "src": "/gallery/events-training/Event -Foto outing kantor.jpg",
+            "alt": "Foto outing arung jeram"
+          },
+          {
+            "src": "/gallery/events-training/Event- Training staff.jpg",
+            "alt": "Foto training staf"
+          },
+          {
+            "src": "/gallery/events-training/foto-bersama-petani.jpeg",
+            "alt": "Foto owner dan petani"
+          }
+        ]
+      },
+      {
+        "id": "team",
+        "title": "Team & Culture",
+        "description": "The people behind NMP's success",
+        "images": [
+          {
+            "src": "/gallery/team-culture/Team - foto tim kantor.JPG",
+            "alt": "Foto bareng tim kantor"
+          },
+          {
+            "src": "/gallery/team-culture/Team- foto tim kantor.jpg",
+            "alt": "Training staf"
+          }
+        ]
+      },
+      {
+        "id": "logistics",
+        "title": "Fleet & Logistics",
+        "description": "Fleet and distribution process across Indonesia",
+        "images": [
+          {
+            "src": "/gallery/fleet-logistics/armada-pengiriman.jpeg",
+            "alt": "Foto truk"
+          },
+          {
+            "src": "https://res.cloudinary.com/dsgb53irc/image/upload/v1777456214/nmp/gallery/wmmwmbbgiqt53zuorafi.png",
+            "alt": "Granmax"
+          },
+          {
+            "src": "https://res.cloudinary.com/dsgb53irc/image/upload/v1777456224/nmp/gallery/d9rjvhlrtlqdo2w6eetr.png",
+            "alt": "Kontainer"
+          }
+        ]
+      }
+    ]
+  },
+  "updatedAt": "2026-04-29T09:51:29.802Z"
 }

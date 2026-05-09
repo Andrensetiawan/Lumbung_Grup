@@ -8,16 +8,16 @@ const testimonials = {
   id: [
     {
       quote:
-        "Kyohikari memberi konsistensi tekstur yang kami butuhkan untuk plating omakase. Tim NMP juga sigap mengamankan stok saat high season.",
-      name: "Chef Hiro",
-      role: "Kepala Chef, Sushi Hiro",
+        "Selama satu tahun terakhir, kami telah menggunakan beras Hikaru di restoran kami. Beras ini memiliki tekstur yang pulen, lengket, dan berasnya putih bersih. Selama pemakaian, kami tidak menerima komplain dari pelanggan terkait kualitasnya. Dari segi pelayanan, respons yang diberikan sangat cepat, penanganan kendala berjalan dengan baik, serta progres pengiriman selalu tepat waktu.",
+      name: "Ibu Endah",
+      role: "Resto Batari",
       avatar: "/partners/sushi-hiro.jpg",
     },
     {
       quote:
-        "Distribusi Hikaru untuk jaringan ramen kami selalu tepat waktu. Mereka terbuka memberikan data lab sehingga QC internal berjalan cepat.",
-      name: "Kenji Watanabe",
-      role: "Koordinator Supply Chain, Ramen Sanpachi",
+        "Kyohikari memberi konsistensi tekstur yang kami butuhkan untuk plating, tim NMP sigap untuk mengamankan stok saat high season.",
+      name: "Head Chef Shigeru",
+      role: "Head Chef Shigeru",
       avatar: "/partners/ramen-sanpachi.png",
     },
     {
@@ -31,16 +31,16 @@ const testimonials = {
   en: [
     {
       quote:
-        "Kyohikari gives us the texture consistency we need for omakase plating. The NMP team is also quick to secure stock during high season.",
-      name: "Chef Hiro",
-      role: "Head Chef, Sushi Hiro",
+        "Over the past year, we have used Hikaru rice in our restaurant. The rice has a fluffy, sticky texture, and is clean white. During usage, we have not received any customer complaints regarding its quality. In terms of service, the response provided is very fast, issue handling goes smoothly, and delivery progress is always on time.",
+      name: "Mrs. Endah",
+      role: "Resto Batari",
       avatar: "/partners/sushi-hiro.jpg",
     },
     {
       quote:
-        "Hikaru distribution for our ramen chain is always on time. They openly share lab data, which keeps our internal QC moving fast.",
-      name: "Kenji Watanabe",
-      role: "Supply Chain Coordinator, Ramen Sanpachi",
+        "Kyohikari provides the texture consistency we need for plating, and the NMP team is quick to secure stock during high season.",
+      name: "Head Chef Shigeru",
+      role: "Head Chef Shigeru",
       avatar: "/partners/ramen-sanpachi.png",
     },
     {

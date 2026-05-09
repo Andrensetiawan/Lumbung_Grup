@@ -52,8 +52,9 @@ export default function ProductsPageClient({ products, productSchemas }: Props) 
   const t = copy[locale];
 
   return (
-    <section className="relative bg-white py-28">
-      <div className="mx-auto max-w-7xl px-6 text-center mb-16">
+    <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-28">
+      <div className="absolute inset-0 bg-white/50" aria-hidden />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center mb-16">
         <span className="mb-4 inline-block rounded-full border border-emerald-200 bg-emerald-50 px-6 py-2 text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-700">
           {t.badge}
         </span>
@@ -76,11 +77,11 @@ export default function ProductsPageClient({ products, productSchemas }: Props) 
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <ProductGrid products={products} filters={PRODUCT_FILTERS} />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 mt-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 mt-20">
         <div className="rounded-3xl bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200 p-8 sm:p-12">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">

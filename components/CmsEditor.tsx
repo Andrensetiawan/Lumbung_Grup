@@ -7,6 +7,7 @@ import type { Product, ProductCategory } from "../lib/data/products";
 import type { HomePageContent } from "../lib/data/home";
 import type { AboutPageContent } from "../lib/data/about";
 import type { PartnersPageContent } from "../lib/data/partners-page";
+import type { GalleryPageContent } from "../lib/data/gallery";
 import CloudinaryUploadButton from "./CloudinaryUploadButton";
 
 interface CmsEditorProps {
@@ -15,10 +16,11 @@ interface CmsEditorProps {
   initialHome: HomePageContent;
   initialAbout: AboutPageContent;
   initialPartnersPage: PartnersPageContent;
+  initialGallery: GalleryPageContent;
   updatedAt: string;
 }
 
-type CmsTab = "home" | "about" | "products" | "partners";
+type CmsTab = "home" | "about" | "products" | "partners" | "gallery";
 type HomeEditorTab = "hero" | "stats" | "creds" | "quality";
 type VideoLayoutMode = "alternate" | "2" | "3" | "4";
 
@@ -125,6 +127,7 @@ export default function CmsEditor({
   initialHome,
   initialAbout,
   initialPartnersPage,
+  initialGallery,
   updatedAt,
 }: CmsEditorProps) {
   const router = useRouter();
@@ -135,8 +138,10 @@ export default function CmsEditor({
   const [home, setHome] = useState<HomePageContent>(initialHome);
   const [about, setAbout] = useState<AboutPageContent>(initialAbout);
   const [partnersPage, setPartnersPage] = useState<PartnersPageContent>(initialPartnersPage);
+  const [gallery, setGallery] = useState<GalleryPageContent>(initialGallery);
   const [selectedProductIndex, setSelectedProductIndex] = useState(0);
   const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(0);
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(0);
   const [status, setStatus] = useState("✨ All good! Nothing has been changed yet.");
   const [saving, setSaving] = useState(false);
   const [draggedSelectorIndex, setDraggedSelectorIndex] = useState<number | null>(null);
@@ -158,6 +163,14 @@ export default function CmsEditor({
     }
     setSelectedPartnerIndex((current) => Math.min(current, partners.length - 1));
   }, [partners.length]);
+
+  useEffect(() => {
+    if (gallery.categories.length === 0) {
+      setSelectedGalleryIndex(0);
+      return;
+    }
+    setSelectedGalleryIndex((current) => Math.min(current, gallery.categories.length - 1));
+  }, [gallery.categories.length]);
 
   function updateHomeHero(key: keyof HomePageContent["hero"], value: string) {
     setHome((current) => ({ ...current, hero: { ...current.hero, [key]: value } }));
@@ -461,6 +474,58 @@ export default function CmsEditor({
     setPartners((current) => current.filter((_, itemIndex) => itemIndex !== index));
   }
 
+  function updateGalleryCategory(index: number, patch: Partial<typeof gallery.categories[0]>) {
+    setSelectedGalleryIndex(index);
+    setGallery((current) => ({
+      ...current,
+      categories: current.categories.map((item, itemIndex) => (itemIndex === index ? { ...item, ...patch } : item)),
+    }));
+  }
+
+  function updateGalleryImage(categoryIndex: number, imageIndex: number, patch: Partial<typeof gallery.categories[0]["images"][0]>) {
+    setGallery((current) => ({
+      ...current,
+      categories: current.categories.map((category, catIdx) =>
+        catIdx === categoryIndex
+          ? {
+              ...category,
+              images: category.images.map((img, imgIdx) =>
+                imgIdx === imageIndex ? { ...img, ...patch } : img,
+              ),
+            }
+          : category,
+      ),
+    }));
+  }
+
+  function addGalleryImage(categoryIndex: number) {
+    setGallery((current) => ({
+      ...current,
+      categories: current.categories.map((category, catIdx) =>
+        catIdx === categoryIndex
+          ? {
+              ...category,
+              images: [...category.images, { src: "", alt: "" }],
+            }
+          : category,
+      ),
+    }));
+  }
+
+  function removeGalleryImage(categoryIndex: number, imageIndex: number) {
+    setGallery((current) => ({
+      ...current,
+      categories: current.categories.map((category, catIdx) =>
+        catIdx === categoryIndex
+          ? {
+              ...category,
+              images: category.images.filter((_, imgIdx) => imgIdx !== imageIndex),
+            }
+          : category,
+      ),
+    }));
+  }
+
   async function handleSave() {
     setStatus("⏳ Please wait, sending to the website...");
     setSaving(true);
@@ -475,20 +540,26 @@ export default function CmsEditor({
           home,
           about,
           partnersPage,
+          gallery,
         }),
       });
 
       const payload = (await response.json()) as { message?: string };
 
       if (!response.ok) {
-        setStatus(`❌ Save failed: ${payload.message ?? "Something went wrong."}`);
+        const errorMsg = payload.message ?? "Something went wrong.";
+        setStatus(`❌ Save failed: ${errorMsg}`);
+        alert(`❌ Gagal Menyimpan!\n\n${errorMsg}`);
         return;
       }
 
       setStatus("🎉 Great! Your changes are now live on the website!");
+      alert("✅ Berhasil!\n\nPerubahan Anda sudah tersimpan dan tampil di website!");
       router.refresh();
-    } catch {
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : "Unknown error";
       setStatus("🔌 Network issue detected. Please try saving again.");
+      alert(`🔌 Terjadi Kesalahan!\n\n${errorMsg}\n\nSilakan coba lagi.`);
     } finally {
       setSaving(false);
     }
@@ -616,6 +687,23 @@ export default function CmsEditor({
               There are <b>{partners.length} partner logos</b> listed.
             </p>
           </button>
+
+          <button
+            type="button"
+            onClick={() => setTab("gallery")}
+            className={`rounded-[2rem] p-5 text-left transition transform hover:-translate-y-1 ${
+              tab === "gallery"
+                ? "scale-105 border-4 border-white bg-pink-400 text-pink-950 shadow-xl"
+                : "border-4 border-transparent bg-white text-stone-600 shadow-md hover:bg-pink-50"
+            }`}
+          >
+            <p className="mb-2 text-4xl">🖼️</p>
+            <p className="text-xs font-black uppercase tracking-widest opacity-70">Section 5</p>
+            <p className="mt-1 text-2xl font-black">Gallery</p>
+            <p className="mt-2 text-sm font-medium opacity-90">
+              There are <b>{gallery.categories.length} categories</b> with photos.
+            </p>
+          </button>
         </section>
 
         <section className="rounded-[2.5rem] border-4 border-stone-100 bg-white p-6 shadow-xl sm:p-8">
@@ -628,7 +716,9 @@ export default function CmsEditor({
                     ? "🏢 About Page Settings"
                   : tab === "products"
                     ? "🛍️ Product Directory"
-                    : "🤝 Partner Directory"}
+                    : tab === "partners"
+                      ? "🤝 Partner Directory"
+                      : "🖼️ Gallery"}
               </h2>
               <p className="mt-2 text-base font-medium text-stone-500">
                 {tab === "home"
@@ -637,7 +727,9 @@ export default function CmsEditor({
                     ? "Edit the company story, vision, mission, and QC copy in both languages."
                   : tab === "products"
                     ? "Pick a product on the left, then edit details on the right."
-                    : "Add a new partner by entering their name and logo."}
+                    : tab === "partners"
+                      ? "Add a new partner by entering their name and logo."
+                      : "Edit gallery categories and images."}
               </p>
             </div>
             <div className="flex gap-2">
@@ -1033,7 +1125,7 @@ export default function CmsEditor({
             </div>
           )}
 
-          {(tab === "products" || tab === "partners") && (
+          {(tab === "products" || tab === "partners" || tab === "gallery") && (
             <div className="mt-8 space-y-6">
               {tab === "partners" && (
                 <div className="rounded-[2rem] border-4 border-purple-100 bg-purple-50 p-5">
@@ -1059,7 +1151,9 @@ export default function CmsEditor({
                 <p className="mb-4 text-sm font-bold text-stone-600">
                   {tab === "products"
                     ? "👉 Drag the product card to reorder, or click to edit:"
-                    : "👉 Drag the partner card to reorder, or click to edit:"}
+                    : tab === "partners"
+                      ? "👉 Drag the partner card to reorder, or click to edit:"
+                      : "👉 Click on a category to edit:"}
                 </p>
                 <div
                   className="custom-scrollbar flex gap-3 overflow-x-auto pb-4 select-none"
@@ -1090,27 +1184,43 @@ export default function CmsEditor({
                           <p className="mt-1 text-xs text-stone-500">{product.size || "Size?"}</p>
                         </button>
                       ))
-                    : partners.map((partner, index) => (
-                        <button
-                          key={`partner-editor-select-${index}`}
-                          type="button"
-                          onClick={() => handleSelectPartner(index)}
-                          draggable
-                          data-selector-index={index}
-                          onDragStart={(event) => startSelectorDrag("partners", index, event)}
-                          onDragEnd={endSelectorDrag}
-                          onDragOver={(event) => event.preventDefault()}
-                          onDrop={() => handleSelectorDrop("partners", index)}
-                          className={`min-w-[140px] flex-shrink-0 rounded-2xl border-2 px-4 py-3 text-left transition transform hover:-translate-y-1 ${
-                            selectedPartnerIndex === index
-                              ? "scale-105 border-purple-400 bg-purple-100 shadow-md"
-                              : "border-stone-200 bg-white hover:border-stone-300"
-                          }`}
-                        >
-                          <p className="line-clamp-1 font-bold text-stone-900">{partner.name || "Untitled"}</p>
-                          <p className="mt-1 text-xs text-stone-500">{partner.sector || "Bidang?"}</p>
-                        </button>
-                      ))}
+                    : tab === "partners"
+                      ? partners.map((partner, index) => (
+                          <button
+                            key={`partner-editor-select-${index}`}
+                            type="button"
+                            onClick={() => handleSelectPartner(index)}
+                            draggable
+                            data-selector-index={index}
+                            onDragStart={(event) => startSelectorDrag("partners", index, event)}
+                            onDragEnd={endSelectorDrag}
+                            onDragOver={(event) => event.preventDefault()}
+                            onDrop={() => handleSelectorDrop("partners", index)}
+                            className={`min-w-[140px] flex-shrink-0 rounded-2xl border-2 px-4 py-3 text-left transition transform hover:-translate-y-1 ${
+                              selectedPartnerIndex === index
+                                ? "scale-105 border-purple-400 bg-purple-100 shadow-md"
+                                : "border-stone-200 bg-white hover:border-stone-300"
+                            }`}
+                          >
+                            <p className="line-clamp-1 font-bold text-stone-900">{partner.name || "Untitled"}</p>
+                            <p className="mt-1 text-xs text-stone-500">{partner.sector || "Bidang?"}</p>
+                          </button>
+                        ))
+                      : gallery.categories.map((category, index) => (
+                          <button
+                            key={`gallery-editor-select-${index}`}
+                            type="button"
+                            onClick={() => setSelectedGalleryIndex(index)}
+                            className={`min-w-[140px] flex-shrink-0 rounded-2xl border-2 px-4 py-3 text-left transition transform hover:-translate-y-1 ${
+                              selectedGalleryIndex === index
+                                ? "scale-105 border-pink-400 bg-pink-100 shadow-md"
+                                : "border-stone-200 bg-white hover:border-stone-300"
+                            }`}
+                          >
+                            <p className="line-clamp-1 font-bold text-stone-900">{category.title || "Untitled"}</p>
+                            <p className="mt-1 text-xs text-stone-500">{category.images.length} foto</p>
+                          </button>
+                        ))}
                 </div>
               </div>
 
@@ -1251,12 +1361,13 @@ export default function CmsEditor({
                           </article>
                         ),
                       )
-                    : partners.map((partner, index) =>
-                        index !== selectedPartnerIndex ? null : (
-                          <article
-                            key={`partner-editor-${index}`}
-                            className="rounded-[2.5rem] border-4 border-purple-100 bg-white p-6 shadow-xl sm:p-8"
-                          >
+                    : tab === "partners"
+                      ? partners.map((partner, index) =>
+                          index !== selectedPartnerIndex ? null : (
+                            <article
+                              key={`partner-editor-${index}`}
+                              className="rounded-[2.5rem] border-4 border-purple-100 bg-white p-6 shadow-xl sm:p-8"
+                            >
                             <div className="mb-5 flex flex-wrap items-center justify-between gap-4 border-b-2 border-stone-100 pb-5">
                               <div className="flex items-center gap-4">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-xl font-black text-purple-600">
@@ -1319,6 +1430,110 @@ export default function CmsEditor({
                                   </div>
                                 </Field>
                               </div>
+                            </div>
+                          </article>
+                        ),
+                      )
+                      : gallery.categories.map((category, index) =>
+                          index !== selectedGalleryIndex ? null : (
+                            <article
+                              key={`gallery-editor-${index}`}
+                            className="rounded-[2.5rem] border-4 border-pink-100 bg-white p-6 shadow-xl sm:p-8"
+                          >
+                            <div className="mb-5 flex flex-wrap items-center justify-between gap-4 border-b-2 border-stone-100 pb-5">
+                              <div className="flex items-center gap-4">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pink-100 text-xl font-black text-pink-600">
+                                  {index + 1}
+                                </div>
+                                <h3 className="text-2xl font-black text-stone-800">{category.title || "Untitled"}</h3>
+                              </div>
+                            </div>
+
+                            <div className="grid gap-6 md:grid-cols-2">
+                              <Field label="🏷️ Category Title">
+                                <input
+                                  value={category.title}
+                                  onChange={(event) => updateGalleryCategory(index, { title: event.target.value })}
+                                  className="w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-lg font-bold outline-none transition focus:border-pink-400 focus:ring-4 focus:ring-pink-400/20"
+                                />
+                              </Field>
+
+                              <Field label="📝 Category Description">
+                                <input
+                                  value={category.description}
+                                  onChange={(event) => updateGalleryCategory(index, { description: event.target.value })}
+                                  className="w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-base outline-none transition focus:border-pink-400 focus:ring-4 focus:ring-pink-400/20"
+                                />
+                              </Field>
+                            </div>
+
+                            <div className="mt-8 space-y-5 rounded-2xl border-2 border-pink-200 bg-pink-50 p-5">
+                              <div className="flex items-center justify-between">
+                                <p className="text-sm font-bold text-pink-800">📸 Gallery Images ({category.images.length})</p>
+                                <button
+                                  type="button"
+                                  onClick={() => addGalleryImage(index)}
+                                  className="rounded-full bg-pink-400 px-3 py-1 text-xs font-bold text-white transition hover:bg-pink-500"
+                                >
+                                  ➕ Add Image
+                                </button>
+                              </div>
+
+                              {category.images.map((image, imgIndex) => (
+                                <div key={`gallery-image-${imgIndex}`} className="rounded-2xl border-2 border-pink-200 bg-white p-4 space-y-3">
+                                  <div className="grid gap-3 md:grid-cols-2">
+                                    <Field label="Image URL">
+                                      <div className="flex flex-col gap-2">
+                                        <input
+                                          value={image.src}
+                                          onChange={(event) =>
+                                            updateGalleryImage(index, imgIndex, { src: event.target.value })
+                                          }
+                                          placeholder="Enter image URL..."
+                                          className="w-full rounded-xl border-2 border-stone-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-pink-400"
+                                        />
+                                        <CloudinaryUploadButton
+                                          label="📤 Upload Image"
+                                          accept="image/*"
+                                          folder="nmp/gallery"
+                                          onUploaded={(url) =>
+                                            updateGalleryImage(index, imgIndex, { src: url })
+                                          }
+                                        />
+                                      </div>
+                                    </Field>
+
+                                    <Field label="Alt Text (Description)">
+                                      <input
+                                        value={image.alt}
+                                        onChange={(event) =>
+                                          updateGalleryImage(index, imgIndex, { alt: event.target.value })
+                                        }
+                                        placeholder="Describe this image..."
+                                        className="w-full rounded-xl border-2 border-stone-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-pink-400"
+                                      />
+                                    </Field>
+                                  </div>
+
+                                  {image.src && (
+                                    <div className="rounded-xl border-2 border-stone-100 bg-stone-50 p-3 overflow-hidden">
+                                      <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        className="h-32 w-full object-cover rounded-lg"
+                                      />
+                                    </div>
+                                  )}
+
+                                  <button
+                                    type="button"
+                                    onClick={() => removeGalleryImage(index, imgIndex)}
+                                    className="w-full rounded-xl border-2 border-red-200 bg-red-50 px-4 py-2 text-xs font-bold text-red-600 transition hover:bg-red-500 hover:text-white"
+                                  >
+                                    🗑️ Delete Image
+                                  </button>
+                                </div>
+                              ))}
                             </div>
                           </article>
                         ),
@@ -1394,6 +1609,39 @@ export default function CmsEditor({
                       <p className="mt-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-700">
                         {partners[selectedPartnerIndex].sector || "Bidang Usaha"}
                       </p>
+                    </div>
+                  )}
+
+                  {tab === "gallery" && gallery.categories[selectedGalleryIndex] && (
+                    <div className="mx-auto w-full max-w-[280px] overflow-hidden rounded-3xl border-2 border-stone-200 bg-white shadow-xl">
+                      <div className="bg-pink-100 p-4 text-center">
+                        <h3 className="text-lg font-black text-stone-800">
+                          {gallery.categories[selectedGalleryIndex].title || "Untitled"}
+                        </h3>
+                      </div>
+                      <div className="space-y-2 p-4">
+                        <div className="grid grid-cols-2 gap-2">
+                          {gallery.categories[selectedGalleryIndex].images.slice(0, 4).map((image, idx) => (
+                            <div
+                              key={idx}
+                              className="rounded-lg border-2 border-stone-100 bg-stone-50 overflow-hidden aspect-square"
+                            >
+                              {image.src ? (
+                                <img
+                                  src={image.src}
+                                  alt={image.alt}
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center text-2xl">🖼️</div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-xs text-stone-600 text-center mt-3">
+                          {gallery.categories[selectedGalleryIndex].images.length} images
+                        </p>
+                      </div>
                     </div>
                   )}
                 </aside>

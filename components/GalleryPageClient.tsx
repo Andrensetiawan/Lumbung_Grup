@@ -51,15 +51,21 @@ export default function GalleryPageClient({ categories }: Props) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-12">
-        <GalleryWithPreview categories={categories} />
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20">
+        <div className="absolute inset-0 bg-white/50" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 sm:px-12">
+          <GalleryWithPreview categories={categories} />
+        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-16 text-center">
-        <div className="rounded-3xl bg-emerald-50 p-12">
-          <h2 className="serif mb-4 text-3xl font-bold text-emerald-950">{t.ctaTitle}</h2>
-          <p className="mx-auto mb-8 max-w-2xl text-stone-600">{t.ctaDesc}</p>
-          <a href="/contact" className="inline-block rounded-full bg-emerald-900 px-10 py-4 text-sm font-bold uppercase tracking-[0.3em] text-white shadow-lg transition-all duration-300 hover:bg-emerald-800 hover:shadow-xl active:scale-95">{t.ctaButton}</a>
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center">
+          <div className="rounded-3xl bg-emerald-50 p-12">
+            <h2 className="serif mb-4 text-3xl font-bold text-emerald-950">{t.ctaTitle}</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-stone-600">{t.ctaDesc}</p>
+            <a href="/contact" className="inline-block rounded-full bg-emerald-900 px-10 py-4 text-sm font-bold uppercase tracking-[0.3em] text-white shadow-lg transition-all duration-300 hover:bg-emerald-800 hover:shadow-xl active:scale-95">{t.ctaButton}</a>
+          </div>
         </div>
       </section>
     </div>

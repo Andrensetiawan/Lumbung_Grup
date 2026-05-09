@@ -30,8 +30,9 @@ export default function PartnersPageClient({ partners, content }: Props) {
         </div>
       </section>
 
-      <section className="bg-emerald-50 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-12">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20">
+        <div className="absolute inset-0 bg-white/50" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-12">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 md:gap-8">
             <div className="rounded-2xl border border-emerald-200 bg-white p-6 text-center sm:p-8"><p className="text-3xl font-black text-emerald-950 sm:text-4xl">19+</p><p className="mt-2 text-xs font-semibold uppercase tracking-widest text-emerald-700">{resolveLocalizedText(content.statPartners, locale)}</p></div>
             <div className="rounded-2xl border border-emerald-200 bg-white p-6 text-center sm:p-8"><p className="text-3xl font-black text-emerald-950 sm:text-4xl">38+</p><p className="mt-2 text-xs font-semibold uppercase tracking-widest text-emerald-700">{resolveLocalizedText(content.statProvince, locale)}</p></div>
@@ -41,8 +42,9 @@ export default function PartnersPageClient({ partners, content }: Props) {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 sm:px-12">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-20 sm:py-28">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-12">
           <div className="mb-16 text-center">
             <h2 className="serif mb-4 text-3xl font-bold text-emerald-950 sm:text-4xl">
               {resolveLocalizedText(content.sectionTitle, locale)}
@@ -66,8 +68,9 @@ export default function PartnersPageClient({ partners, content }: Props) {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-white to-stone-50 py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-6 text-center sm:px-12">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-20 sm:py-28">
+        <div className="absolute inset-0 bg-white/50" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center sm:px-12">
           <h2 className="serif mb-6 text-3xl font-bold text-emerald-950 sm:text-4xl">
             {resolveLocalizedText(content.ctaTitle, locale)}
           </h2>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, ChevronDown, Instagram, Facebook, Check } from "lucide-react";
@@ -14,10 +15,24 @@ const navLinks = [
   { key: "docs", href: "/gallery" },
 ] as const;
 
-const languageOptions: Array<{ value: SiteLocale; label: string; flag: string }> = [
-  { value: "id", label: "Indonesia", flag: "🇮🇩" },
-  { value: "en", label: "English", flag: "🇺🇸" },
+const languageOptions: Array<{ value: SiteLocale; label: string }> = [
+  { value: "id", label: "Indonesia" },
+  { value: "en", label: "English" },
 ];
+
+function LanguageFlag({ value }: { value: SiteLocale }) {
+  const src = value === "id" ? "/bendera/indo.png" : "/bendera/US.png";
+
+  if (value === "id") {
+    return (
+      <Image src={src} alt="Bendera Indonesia" width={28} height={20} className="h-5 w-7 rounded-[4px] object-cover shadow-sm" />
+    );
+  }
+
+  return (
+    <Image src={src} alt="Bendera Inggris" width={28} height={20} className="h-5 w-7 rounded-[4px] object-cover shadow-sm" />
+  );
+}
 
 const translations = {
   id: {
@@ -137,7 +152,7 @@ export default function Navbar({
             }`}
             aria-label={t.language}
           >
-            <span className="text-[20px] leading-none">{activeLanguage.flag}</span>
+            <LanguageFlag value={activeLanguage.value} />
             <ChevronDown size={14} />
           </button>
 
@@ -154,7 +169,7 @@ export default function Navbar({
                   className="flex w-full items-center justify-between px-4 py-3 text-left text-base text-stone-700 transition hover:bg-stone-50"
                 >
                   <span className="flex items-center gap-2">
-                    <span>{option.flag}</span>
+                    <LanguageFlag value={option.value} />
                     <span>{option.label}</span>
                   </span>
                   {locale === option.value ? <Check size={16} className="text-emerald-700" /> : null}
@@ -202,11 +217,11 @@ export default function Navbar({
                       key={option.value}
                       type="button"
                       onClick={() => setLocale(option.value)}
-                      className={`rounded-full px-2 py-1 text-xs font-bold transition ${
+                      className={`flex h-8 w-8 items-center justify-center rounded-full transition ${
                         locale === option.value ? "bg-emerald-900 text-white" : "text-stone-600"
                       }`}
                     >
-                      {option.flag}
+                      <LanguageFlag value={option.value} />
                     </button>
                   ))}
                 </div>

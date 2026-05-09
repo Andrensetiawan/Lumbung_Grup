@@ -61,7 +61,7 @@ const galleryCategories = [
     title: "Team & Culture",
     description: "The people behind NMP's success",
     images: [
-      { src: "/gallery/team-culture/Team - foto tim kantor.JPG", alt: "Foto bareng tim kantor" },
+      { src: "/gallery/team-culture/team-management.jpg", alt: "Foto bareng tim kantor" },
       { src: "/gallery/team-culture/Team- foto tim kantor.jpg", alt: "Training staf" },
     ],
   },
@@ -70,9 +70,10 @@ const galleryCategories = [
     title: "Fleet & Logistics",
     description: "Fleet and distribution process across Indonesia",
     images: [
-      { src: "/gallery/fleet-logistics/Flat & logistik- Armada pengiriman 1.png", alt: "Foto truk" },
-      { src: "/gallery/fleet-logistics/Flat & logistik- Armada pengiriman 2 - 2.png", alt: "Granmax" },
-      { src: "/gallery/fleet-logistics/Flat & logistik- Armada pengiriman 3.png", alt: "Kontainer" },
+      { src: "/gallery/fleet-logistics/armada-pengiriman-1.png", alt: "Kontainer" },
+      { src: "/gallery/fleet-logistics/armada-pengiriman-2.jpeg", alt: " Foto truk" },
+      { src: "/gallery/fleet-logistics/armada-pengiriman-3.png", alt: " Granmax" },
+      { src: "/gallery/fleet-logistics/armada-pengiriman-4.jpg", alt: "Flat dan logistik" },
     ],
   },
 ];

@@ -133,10 +133,9 @@ export default function HomePageClient({ content, organizationSchema, localBusin
         <picture className="absolute inset-0 z-0 block">
           <source media="(max-width: 640px)" srcSet="/padi-mobile.avif" type="image/avif" />
           <source media="(max-width: 640px)" srcSet="/padi-mobile.webp" type="image/webp" />
-          <source srcSet="/padi.avif" type="image/avif" />
-          <source srcSet="/padi.webp" type="image/webp" />
+          <source srcSet="/padi1.webp" type="image/webp" />
           <img
-            src="/padi-mobile.webp"
+            src="/padi1.webp"
             alt=""
             fetchPriority="high"
             loading="eager"
@@ -149,7 +148,7 @@ export default function HomePageClient({ content, organizationSchema, localBusin
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(185,154,100,0.18),transparent_26%),linear-gradient(to_bottom,rgba(20,35,31,0.58),rgba(20,35,31,0.35)_30%,rgba(20,35,31,0.68))]" aria-hidden />
         <div className="absolute left-[6%] top-28 hidden h-40 w-40 rounded-full border border-white/20 bg-white/5 blur-[1px] lg:block" aria-hidden />
         <div className="absolute right-[8%] top-[22%] hidden h-28 w-28 rounded-full border border-amber-200/25 bg-amber-100/10 blur-[1px] lg:block" aria-hidden />
-        <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-32 text-left sm:px-6 sm:text-center">
+        <div className="relative z-10 mx-auto w-full max-w-4xl px-4 py-32 text-center sm:px-6">
           {localizedContent.hero.badge ? (
             <div className="mb-6 inline-flex items-center justify-center rounded-full border-2 border-white/50 px-6 py-2.5 text-[10px] font-extrabold uppercase tracking-[0.3em] backdrop-blur sm:text-[11px] sm:tracking-[0.4em]">
               {localizedContent.hero.badge}
@@ -169,14 +168,14 @@ export default function HomePageClient({ content, organizationSchema, localBusin
             </span>
           </h1>
 
-          <div className="mx-auto -mt-4 mb-4 flex max-w-3xl flex-col items-center justify-center gap-2 text-emerald-950 sm:-mt-6 sm:flex-row sm:gap-4 lg:-mt-8 lg:gap-6">
-            <div className="flex flex-col items-center justify-center sm:translate-x-[-35px] lg:translate-x-[-35px]">
+          <div className="mx-auto -mt-4 mb-4 flex max-w-3xl flex-row items-center justify-center gap-2 text-emerald-950 sm:-mt-6 sm:gap-4 lg:-mt-8 lg:gap-6">
+            <div className="flex flex-col items-center justify-center sm:translate-x-[-35px] lg:translate-x-[-35px] bg-white px-2 sm:px-3 md:px-4 rounded-2xl">
               <Image
                 src="/logo/logo-kyohikari.png"
                 alt="Logo Kyohikari"
                 width={560}
                 height={374}
-                className="h-48 w-auto object-contain drop-shadow-[0_10px_28px_rgba(0,0,0,0.2)] sm:h-56 md:h-64 rounded-2xl"
+                className="h-32 w-auto object-contain sm:h-48 md:h-56 lg:h-64 rounded-2xl"
                 priority
               />
             </div>
@@ -186,7 +185,7 @@ export default function HomePageClient({ content, organizationSchema, localBusin
                 alt="Logo Hikaru"
                 width={560}
                 height={374}
-                className="h-48 w-auto object-contain drop-shadow-[0_10px_28px_rgba(0,0,0,0.2)] sm:h-56 md:h-64 rounded-2xl"
+                className="h-32 w-auto object-contain drop-shadow-[0_10px_28px_rgba(0,0,0,0.2)] sm:h-48 md:h-56 lg:h-64 rounded-2xl"
               />
             </div>
           </div>
@@ -227,9 +226,10 @@ export default function HomePageClient({ content, organizationSchema, localBusin
         </div>
       </section>
 
-      <section className="relative bg-white py-16 sm:py-20">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent" aria-hidden />
-        <div className="mx-auto max-w-7xl px-6 sm:px-12">
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-12">
           <div className="mb-10 text-center sm:mb-12">
             <span className="mb-4 inline-flex items-center justify-center rounded-full bg-emerald-50 px-5 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-emerald-700">
               {t.behindTheQuality}
@@ -267,8 +267,9 @@ export default function HomePageClient({ content, organizationSchema, localBusin
         <WhyChooseSection />
       </div>
 
-      <section className="relative bg-stone-50 py-16 sm:py-20 [content-visibility:auto] [contain-intrinsic-size:1px_900px]">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20 [content-visibility:auto] [contain-intrinsic-size:1px_900px]">
+        <div className="absolute inset-0 bg-white/40" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6">
           <div className="mb-8 text-center sm:mb-10">
             <span className="mb-3 inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-emerald-700">
               {t.socialProof}
@@ -280,8 +281,9 @@ export default function HomePageClient({ content, organizationSchema, localBusin
         </div>
       </section>
 
-      <section className="relative bg-white py-16 sm:py-20 [content-visibility:auto] [contain-intrinsic-size:1px_900px]">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:items-center">
+      <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20 [content-visibility:auto] [contain-intrinsic-size:1px_900px]">
+        <div className="absolute inset-0 bg-white/60" aria-hidden />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:items-center">
           <div>
             <span className="mb-4 block text-xs font-bold uppercase tracking-[0.4em] text-emerald-700">{t.heritageBadge}</span>
             <h2 className="serif mb-6 text-4xl font-bold text-emerald-950">{t.heritageTitle}</h2>

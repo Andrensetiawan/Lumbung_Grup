@@ -23,6 +23,7 @@ const galleryCategories = [
       { src: "/gallery/facilities-warehouse/foto-gudang-terbaru.jpeg", alt: "Foto gudang terbaru - pagar hitam" },
       { src: "/gallery/facilities-warehouse/Warehouse facility - bahan baku digudang.jpg", alt: "Foto bahan baku di gudang" },
       { src: "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku.jpg", alt: "Foto stok bahan baku" },
+      { src: "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku 2.png", alt: "Foto stok bahan baku 2" },
     ],
   },
   {

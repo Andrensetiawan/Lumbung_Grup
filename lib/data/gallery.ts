@@ -24,6 +24,7 @@ export const DEFAULT_GALLERY_CONTENT: GalleryPageContent = {
         { src: "/gallery/facilities-warehouse/foto-gudang-terbaru.jpeg", alt: "Foto gudang terbaru - pagar hitam" },
         { src: "/gallery/facilities-warehouse/Warehouse facility - bahan baku digudang.jpg", alt: "Foto bahan baku di gudang" },
         { src: "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku.jpg", alt: "Foto stok bahan baku" },
+        { src: "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku 2.png", alt: "Foto stok bahan baku 2" },
       ],
     },
     {
@@ -71,10 +72,10 @@ export const DEFAULT_GALLERY_CONTENT: GalleryPageContent = {
       title: "Fleet & Logistics",
       description: "Fleet and distribution process across Indonesia",
       images: [
-        { src: "/gallery/fleet-logistics/armada-pengiriman.jpeg", alt: "Foto truk" },
+        { src: "/gallery/fleet-logistics/armada-pengiriman-2.jpeg", alt: "Foto truk" },
         { src: "/gallery/fleet-logistics/muat-ke-logistik.jpeg", alt: "Granmax" },
         { src: "/gallery/fleet-logistics/armada-pengiriman-3.png", alt: "Kontainer" },
-        { src: "/gallery/fleet-logistics/armada-pengiriman-4.png", alt: "Flat dan logistik" },
+        { src: "/gallery/fleet-logistics/armada-pengiriman-4.jpg", alt: "Flat dan logistik" },
       ],
     },
   ],

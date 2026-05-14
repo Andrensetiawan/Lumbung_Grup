@@ -59,11 +59,11 @@ export default function VideoPlayer({ videos = defaultVideos, layoutMode = "2" }
   const visibleVideos = normalizedVideos.slice(0, columns);
 
   return (
-    <div className={`grid h-full w-full gap-2 ${columns === 4 ? "md:grid-cols-2 xl:grid-cols-4" : columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+    <div className={`grid w-full gap-2 ${columns === 4 ? "md:grid-cols-2 xl:grid-cols-4" : columns === 3 ? "md:grid-cols-3" : "grid-cols-1"}`}>
       {visibleVideos.map((videoUrl, index) => (
         <div key={`${videoUrl}-${index}`} className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-100 to-stone-100 shadow-xl ring-1 ring-stone-200">
           <video
-            className="h-full w-full object-cover"
+            className="h-auto w-full bg-black object-contain"
             autoPlay
             controls
             muted

@@ -88,5 +88,20 @@ export function localizeHomeContent(content: HomePageContent, locale: HomeLocale
       title: translateHomeTextToEnglish(content.quality.title),
       description: translateHomeTextToEnglish(content.quality.description),
     },
+    why: content.why
+      ? {
+          ...(content.why.en || {}),
+          badge: translateHomeTextToEnglish((content.why as any).id?.badge || "") || "",
+          title: translateHomeTextToEnglish((content.why as any).id?.title || "") || "",
+          description: translateHomeTextToEnglish((content.why as any).id?.description || "") || "",
+          benefits: ((content.why as any).id?.benefits || []).map((b: any) => ({
+            title: translateHomeTextToEnglish(b.title || ""),
+            description: translateHomeTextToEnglish(b.description || ""),
+            stat: translateHomeTextToEnglish(b.stat || ""),
+          })),
+          qualityMedia: (content.why as any).id?.qualityMedia || [],
+          logisticsMedia: (content.why as any).id?.logisticsMedia || [],
+        }
+      : undefined,
   };
 }

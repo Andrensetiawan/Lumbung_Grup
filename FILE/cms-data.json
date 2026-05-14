@@ -436,11 +436,11 @@
       "title": "Proses Kami Menjaga Kualitas",
       "description": "Lihat langsung bagaimana setiap butir beras Kyohikari diproses dengan standar internasional - dari pemilihan padi hingga pengemasan final.",
       "videoUrls": [
-        "/Vidio/Vidio produk hikaru.mp4",
+        "/Vidio/Behind the quality- vidio proses menjaga kualitas.mp4",
         "/Vidio/Vidio produk kyohikari.mp4",
-        "https://res.cloudinary.com/dsgb53irc/video/upload/v1776868400/nmp/videos/i3p13ez1q4fhedtqyz9c.mp4"
+        "/Vidio/Vidio produk hikaru.mp4"
       ],
-      "videoLayout": "alternate"
+      "videoLayout": "2"
     }
   },
   "about": {
@@ -657,6 +657,10 @@
           {
             "src": "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku.jpg",
             "alt": "Foto stok bahan baku"
+          },
+          {
+            "src": "/gallery/facilities-warehouse/Warehouse facility - stok bahan baku 2.png",
+            "alt": "Foto stok bahan baku 2"
           }
         ]
       },
@@ -742,7 +746,7 @@
         "description": "Fleet and distribution process across Indonesia",
         "images": [
           {
-            "src": "/gallery/fleet-logistics/armada-pengiriman.jpeg",
+            "src": "/gallery/fleet-logistics/armada-pengiriman-2.jpeg",
             "alt": "Foto truk"
           },
           {
@@ -757,5 +761,5 @@
       }
     ]
   },
-  "updatedAt": "2026-04-29T09:51:29.802Z"
+  "updatedAt": "2026-05-14T04:57:33.872Z"
 }

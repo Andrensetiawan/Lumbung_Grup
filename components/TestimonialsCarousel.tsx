@@ -20,13 +20,6 @@ const testimonials = {
       role: "Head Chef Shigeru",
       avatar: "/partners/ramen-sanpachi.png",
     },
-    {
-      quote:
-        "Beras merah Kyohikari menjadi unggulan di rak premium kami. Edukasi produk dari tim NMP membuat penjualan naik signifikan.",
-      name: "Dewi Astari",
-      role: "Manajer Kategori, Ranch Market",
-      avatar: "/partners/ranch-market.jpg",
-    },
   ],
   en: [
     {
@@ -42,13 +35,6 @@ const testimonials = {
       name: "Head Chef Shigeru",
       role: "Head Chef Shigeru",
       avatar: "/partners/ramen-sanpachi.png",
-    },
-    {
-      quote:
-        "Kyohikari red rice became a premium shelf standout for us. Product education from the NMP team significantly increased sales.",
-      name: "Dewi Astari",
-      role: "Category Manager, Ranch Market",
-      avatar: "/partners/ranch-market.jpg",
     },
   ],
 } as const;

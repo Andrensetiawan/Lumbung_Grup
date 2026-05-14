@@ -21,7 +21,7 @@ interface CmsEditorProps {
 }
 
 type CmsTab = "home" | "about" | "products" | "partners" | "gallery";
-type HomeEditorTab = "hero" | "stats" | "creds" | "quality";
+type HomeEditorTab = "hero" | "stats" | "creds" | "quality" | "why";
 type VideoLayoutMode = "alternate" | "2" | "3" | "4";
 
 const categoryOptions: Array<{ label: string; value: ProductCategory }> = [
@@ -192,6 +192,62 @@ export default function CmsEditor({
         videoUrls: current.quality.videoUrls.map((item, itemIndex) =>
           itemIndex === index ? value : item,
         ),
+      },
+    }));
+  }
+
+  function updateHomeWhyField(key: string, value: any) {
+    setHome((current) => ({ ...current, why: { ...(current as any).why, id: { ...((current as any).why?.id || {}), [key]: value } } }));
+  }
+
+  function updateWhyBenefit(index: number, key: string, value: string) {
+    setHome((current) => ({
+      ...current,
+      why: {
+        ...(current as any).why,
+        id: {
+          ...((current as any).why?.id || {}),
+          benefits: (((current as any).why?.id?.benefits || []) as any[]).map((b: any, i: number) => (i === index ? { ...b, [key]: value } : b)),
+        },
+      },
+    }));
+  }
+
+  function updateWhyMedia(type: 'qualityMedia'|'logisticsMedia', index: number, key: string, value: string) {
+    setHome((current) => ({
+      ...current,
+      why: {
+        ...(current as any).why,
+        id: {
+          ...((current as any).why?.id || {}),
+          [type]: (((current as any).why?.id?.[type] || []) as any[]).map((m: any, i: number) => (i === index ? { ...m, [key]: value } : m)),
+        },
+      },
+    }));
+  }
+
+  function addWhyMedia(type: 'qualityMedia'|'logisticsMedia') {
+    setHome((current) => ({
+      ...current,
+      why: {
+        ...(current as any).why,
+        id: {
+          ...((current as any).why?.id || {}),
+          [type]: [ ...(((current as any).why?.id?.[type] || []) as any[]), { label: '', src: '', alt: '' } ],
+        },
+      },
+    }));
+  }
+
+  function removeWhyMedia(type: 'qualityMedia'|'logisticsMedia', index: number) {
+    setHome((current) => ({
+      ...current,
+      why: {
+        ...(current as any).why,
+        id: {
+          ...((current as any).why?.id || {}),
+          [type]: (((current as any).why?.id?.[type] || []) as any[]).filter((_, i: number) => i !== index),
+        },
       },
     }));
   }
@@ -989,6 +1045,66 @@ export default function CmsEditor({
                       >
                         ➕ Tambah Kolom Video Baru
                       </button>
+                    </div>
+                  </div>
+                )}
+                {homeEditorTab === "why" && (
+                  <div className="space-y-5 rounded-2xl border-2 border-emerald-100 bg-emerald-50 p-6">
+                    <Field label="Badge Kecil (atas)">
+                      <input value={(home as any).why?.id?.badge || ''} onChange={(e) => updateHomeWhyField('badge', e.target.value)} className="w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-base outline-none" />
+                    </Field>
+                    <Field label="Judul Section">
+                      <input value={(home as any).why?.id?.title || ''} onChange={(e) => updateHomeWhyField('title', e.target.value)} className="w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-lg font-black outline-none" />
+                    </Field>
+                    <Field label="Deskripsi Section">
+                      <textarea value={(home as any).why?.id?.description || ''} onChange={(e) => updateHomeWhyField('description', e.target.value)} className="w-full rounded-2xl border-2 border-stone-200 bg-white px-5 py-4 text-base outline-none" />
+                    </Field>
+
+                    <div className="space-y-4 rounded-2xl border-2 border-white bg-white p-5">
+                      <p className="text-sm font-bold text-emerald-800">Benefit Cards</p>
+                      {(((home as any).why?.id?.benefits || []) as any[]).map((b, idx) => (
+                        <div key={idx} className="space-y-2 rounded-xl border-2 border-stone-100 bg-stone-50 p-4">
+                          <input value={b.title || ''} onChange={(e) => updateWhyBenefit(idx, 'title', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <input value={b.stat || ''} onChange={(e) => updateWhyBenefit(idx, 'stat', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <textarea value={b.description || ''} onChange={(e) => updateWhyBenefit(idx, 'description', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-4 rounded-2xl border-2 border-white bg-white p-5">
+                      <p className="text-sm font-bold text-emerald-800">Quality Media (labels, alt & src)</p>
+                      {(((home as any).why?.id?.qualityMedia || []) as any[]).map((m, idx) => (
+                        <div key={idx} className="space-y-2 rounded-xl border-2 border-stone-100 bg-stone-50 p-4">
+                          <input placeholder="Label (optional)" value={m.label || ''} onChange={(e) => updateWhyMedia('qualityMedia', idx, 'label', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <input placeholder="Alt text (optional)" value={m.alt || ''} onChange={(e) => updateWhyMedia('qualityMedia', idx, 'alt', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <div className="flex gap-2">
+                            <input placeholder="Image URL" value={m.src || ''} onChange={(e) => updateWhyMedia('qualityMedia', idx, 'src', e.target.value)} className="flex-1 rounded-xl border-2 px-3 py-2" />
+                            <CloudinaryUploadButton label="📤 Upload" accept="image/*" folder="nmp/why" onUploaded={(url) => updateWhyMedia('qualityMedia', idx, 'src', url)} />
+                          </div>
+                          <div className="flex gap-2">
+                            <button type="button" onClick={() => removeWhyMedia('qualityMedia', idx)} className="rounded-xl border-2 border-red-200 bg-red-50 px-4 py-2 text-xs font-bold text-red-600">🗑️ Remove</button>
+                          </div>
+                        </div>
+                      ))}
+                      <button type="button" onClick={() => addWhyMedia('qualityMedia')} className="w-full rounded-xl border-4 border-dashed border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">➕ Tambah Foto Kualitas</button>
+                    </div>
+
+                    <div className="space-y-4 rounded-2xl border-2 border-white bg-white p-5">
+                      <p className="text-sm font-bold text-emerald-800">Logistics Media (labels, alt & src)</p>
+                      {(((home as any).why?.id?.logisticsMedia || []) as any[]).map((m, idx) => (
+                        <div key={idx} className="space-y-2 rounded-xl border-2 border-stone-100 bg-stone-50 p-4">
+                          <input placeholder="Label (optional)" value={m.label || ''} onChange={(e) => updateWhyMedia('logisticsMedia', idx, 'label', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <input placeholder="Alt text (optional)" value={m.alt || ''} onChange={(e) => updateWhyMedia('logisticsMedia', idx, 'alt', e.target.value)} className="w-full rounded-xl border-2 px-3 py-2" />
+                          <div className="flex gap-2">
+                            <input placeholder="Image URL" value={m.src || ''} onChange={(e) => updateWhyMedia('logisticsMedia', idx, 'src', e.target.value)} className="flex-1 rounded-xl border-2 px-3 py-2" />
+                            <CloudinaryUploadButton label="📤 Upload" accept="image/*" folder="nmp/why" onUploaded={(url) => updateWhyMedia('logisticsMedia', idx, 'src', url)} />
+                          </div>
+                          <div className="flex gap-2">
+                            <button type="button" onClick={() => removeWhyMedia('logisticsMedia', idx)} className="rounded-xl border-2 border-red-200 bg-red-50 px-4 py-2 text-xs font-bold text-red-600">🗑️ Remove</button>
+                          </div>
+                        </div>
+                      ))}
+                      <button type="button" onClick={() => addWhyMedia('logisticsMedia')} className="w-full rounded-xl border-4 border-dashed border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">➕ Tambah Foto Logistik</button>
                     </div>
                   </div>
                 )}

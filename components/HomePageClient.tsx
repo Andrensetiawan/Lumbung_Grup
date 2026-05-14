@@ -17,10 +17,13 @@ const VideoPlayer = dynamic(() => import("./VideoPlayer"), {
   ),
 });
 
-const WhyChooseSection = dynamic(() => import("./WhyChooseSection"), {
-  ssr: false,
-  loading: () => <div className="h-[820px] w-full bg-white" aria-hidden />,
-});
+const WhyChooseSection = dynamic(
+  () => import("./WhyChooseSection"),
+  {
+    ssr: false,
+    loading: () => <div className="h-[820px] w-full bg-white" aria-hidden />,
+  }
+) as React.ComponentType<{ content?: HomePageContent }>;
 
 const TestimonialsCarousel = dynamic(() => import("./TestimonialsCarousel"), {
   ssr: false,
@@ -241,7 +244,7 @@ export default function HomePageClient({ content, organizationSchema, localBusin
           <div className="mx-auto max-w-5xl">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-stone-200">
               <div className="aspect-video bg-gradient-to-br from-emerald-100 to-stone-100">
-                <VideoPlayer videos={localizedContent.quality.videoUrls} layoutMode={localizedContent.quality.videoLayout} />
+                <VideoPlayer videos={[localizedContent.quality.videoUrls[0]]} layoutMode="alternate" />
               </div>
             </div>
 
@@ -259,12 +262,20 @@ export default function HomePageClient({ content, organizationSchema, localBusin
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-stone-600">{t.certifiedProcess}</p>
               </div>
             </div>
+
+            <p className="serif mt-8 text-center text-3xl font-bold text-emerald-950 sm:text-4xl">Five Stage</p>
+
+            <div className="relative mt-8 overflow-hidden rounded-3xl shadow-2xl ring-1 ring-stone-200 sm:mt-10">
+              <div className="aspect-video bg-gradient-to-br from-emerald-100 to-stone-100">
+                <VideoPlayer videos={[localizedContent.quality.videoUrls[1]]} layoutMode="alternate" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <div className="[content-visibility:auto] [contain-intrinsic-size:1px_1200px]">
-        <WhyChooseSection />
+        <WhyChooseSection content={localizedContent} />
       </div>
 
       <section className="relative bg-[url('/BG/1.jpg')] bg-cover bg-center py-16 sm:py-20 [content-visibility:auto] [contain-intrinsic-size:1px_900px]">

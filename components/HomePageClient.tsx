@@ -262,9 +262,7 @@ export default function HomePageClient({ content, organizationSchema, localBusin
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-stone-600">{t.certifiedProcess}</p>
               </div>
             </div>
-
-            <p className="serif mt-8 text-center text-3xl font-bold text-emerald-950 sm:text-4xl">Five Stage</p>
-
+            
             <div className="relative mt-8 overflow-hidden rounded-3xl shadow-2xl ring-1 ring-stone-200 sm:mt-10">
               <div className="aspect-video bg-gradient-to-br from-emerald-100 to-stone-100">
                 <VideoPlayer videos={[localizedContent.quality.videoUrls[1]]} layoutMode="alternate" />

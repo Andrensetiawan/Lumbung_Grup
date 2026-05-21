@@ -93,7 +93,7 @@ export default function AboutPageClient({ content }: Props) {
                 </p>
               </div>
             </div>
-            <div className="relative hidden overflow-hidden rounded-[2rem] shadow-2xl lg:block lg:mt-12" style={{ aspectRatio: "16/9" }}>
+            <div className="relative hidden overflow-hidden rounded-[2rem] shadow-2xl lg:block lg:mt-12" style={{ aspectRatio: "16/9", minHeight: "420px" }}>
               <video
                 src="/Optical sorting.mp4"
                 className="h-full w-full object-cover animate-fade-in"

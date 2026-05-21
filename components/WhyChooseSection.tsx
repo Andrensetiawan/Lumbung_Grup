@@ -194,9 +194,9 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
   // prefer CMS-provided `why` if available
   const cmsWhy = (content && (content as any).why) || null;
   const localeKey = (locale as "id" | "en") || "en";
-  const benefits = mergeByIndex(DEFAULT_BENEFITS[localeKey] as any[], cmsWhy?.benefits);
-  const qualityMedia = mergeByIndex(DEFAULT_MEDIA[localeKey].qualityMedia as any[], cmsWhy?.qualityMedia);
-  const logisticsMedia = mergeByIndex(DEFAULT_MEDIA[localeKey].logisticsMedia as any[], cmsWhy?.logisticsMedia);
+  const benefits = mergeByIndex([...DEFAULT_BENEFITS[localeKey]] as any[], cmsWhy?.benefits);
+  const qualityMedia = mergeByIndex([...DEFAULT_MEDIA[localeKey].qualityMedia] as any[], cmsWhy?.qualityMedia);
+  const logisticsMedia = mergeByIndex([...DEFAULT_MEDIA[localeKey].logisticsMedia] as any[], cmsWhy?.logisticsMedia);
   const successSlides = (content && (content as any).success && (content as any).success.slides) || null;
   const successStats = (content && (content as any).success && (content as any).success.stats) || null;
 

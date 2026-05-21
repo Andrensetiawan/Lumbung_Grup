@@ -11,14 +11,14 @@ const testimonials = {
         "Selama satu tahun terakhir, kami telah menggunakan beras Hikaru di restoran kami. Beras ini memiliki tekstur yang pulen, lengket, dan berasnya putih bersih. Selama pemakaian, kami tidak menerima komplain dari pelanggan terkait kualitasnya. Dari segi pelayanan, respons yang diberikan sangat cepat, penanganan kendala berjalan dengan baik, serta progres pengiriman selalu tepat waktu.",
       name: "Ibu Endah",
       role: "Resto Batari",
-      avatar: "/partners/sushi-hiro.jpg",
+      avatar: "/partners/batari.jpg",
     },
     {
       quote:
         "Kyohikari memberi konsistensi tekstur yang kami butuhkan untuk plating, tim NMP sigap untuk mengamankan stok saat high season.",
       name: "Head Chef Shigeru",
       role: "Head Chef Shigeru",
-      avatar: "/partners/ramen-sanpachi.png",
+      avatar: "/partners/shigeru.png",
     },
   ],
   en: [
@@ -27,14 +27,14 @@ const testimonials = {
         "Over the past year, we have used Hikaru rice in our restaurant. The rice has a fluffy, sticky texture, and is clean white. During usage, we have not received any customer complaints regarding its quality. In terms of service, the response provided is very fast, issue handling goes smoothly, and delivery progress is always on time.",
       name: "Mrs. Endah",
       role: "Resto Batari",
-      avatar: "/partners/sushi-hiro.jpg",
+      avatar: "/partners/batari.jpg",
     },
     {
       quote:
         "Kyohikari provides the texture consistency we need for plating, and the NMP team is quick to secure stock during high season.",
       name: "Head Chef Shigeru",
       role: "Head Chef Shigeru",
-      avatar: "/partners/ramen-sanpachi.png",
+      avatar: "/partners/shigeru.png",
     },
   ],
 } as const;

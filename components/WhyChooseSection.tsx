@@ -32,8 +32,132 @@ const DEFAULT_BENEFITS = {
       stat: "19+ Klien Utama",
     },
   ],
-  en: [],
+  en: [
+    {
+      icon: Shield,
+      title: "5-Layer Quality Control",
+      description:
+        "Every Kyohikari and Hikaru batch passes through 5 QC layers under BPOM and international food-safety standards, from incoming raw checks to final release.",
+      stat: "98% Pass Rate",
+    },
+    {
+      icon: Truck,
+      title: "National Logistics Network",
+      description:
+        "A temperature-controlled distribution fleet serving all 38 provinces with real-time tracking. Lead time is 3-7 days with freshness guaranteed until it reaches your location.",
+      stat: "38 Provinces",
+    },
+    {
+      icon: Award,
+      title: "Trusted Since 2020",
+      description:
+        "Trusted by hotel chains, restaurant groups, and modern retail to maintain supply consistency. Our partner portfolio includes major names in Indonesia's hospitality industry.",
+      stat: "19+ Key Clients",
+    },
+  ],
 } as const;
+
+const DEFAULT_MEDIA = {
+  id: {
+    qualityMedia: [
+      {
+        label: "Incoming raw check",
+        type: "image",
+        src: "/gallery/quality-control/Quality control- raw check.PNG",
+        alt: "Rice moisture-level testing during incoming raw check",
+      },
+      {
+        label: "Optical sorting",
+        type: "video",
+        src: "/Optical sorting.mp4",
+        alt: "Optical sorting",
+      },
+      {
+        label: "Quality Assurance 24 hours",
+        type: "image",
+        src: "/gallery/quality-control/Quality control - quality asurance.PNG",
+        alt: "Quality assurance staff conducting inspection",
+      },
+    ],
+    logisticsMedia: [
+      {
+        label: "Distribution fleet",
+        src: "/gallery/fleet-logistics/armada-pengiriman-2.jpeg",
+        alt: "NMP distribution fleet",
+      },
+      {
+        label: "Logistics loading",
+        src: "/gallery/fleet-logistics/muat-ke-logistik.jpeg",
+        alt: "Product loading process into logistics fleet",
+      },
+      {
+        label: "Customer delivery",
+        src: "/gallery/fleet-logistics/pengiriman-ke-gudang-customer.jpeg",
+        alt: "Delivery to customer warehouse",
+      },
+    ],
+  },
+  en: {
+    qualityMedia: [
+      {
+        label: "Incoming raw check",
+        type: "image",
+        src: "/gallery/quality-control/Quality control- raw check.PNG",
+        alt: "Rice moisture-level testing during incoming raw check",
+      },
+      {
+        label: "Optical sorting",
+        type: "video",
+        src: "/Optical sorting.mp4",
+        alt: "Optical sorting",
+      },
+      {
+        label: "Quality Assurance 24 hours",
+        type: "image",
+        src: "/gallery/quality-control/Quality control - quality asurance.PNG",
+        alt: "Quality assurance staff conducting inspection",
+      },
+    ],
+    logisticsMedia: [
+      {
+        label: "Distribution fleet",
+        src: "/gallery/fleet-logistics/armada-pengiriman-2.jpeg",
+        alt: "NMP distribution fleet",
+      },
+      {
+        label: "Logistics loading",
+        src: "/gallery/fleet-logistics/muat-ke-logistik.jpeg",
+        alt: "Product loading process into logistics fleet",
+      },
+      {
+        label: "Customer delivery",
+        src: "/gallery/fleet-logistics/pengiriman-ke-gudang-customer.jpeg",
+        alt: "Delivery to customer warehouse",
+      },
+    ],
+  },
+} as const;
+
+function mergeByIndex<T extends Record<string, any>>(defaults: T[], incoming: T[] | undefined): T[] {
+  if (!incoming || incoming.length === 0) {
+    return defaults;
+  }
+
+  return defaults.map((fallbackItem, index) => {
+    const incomingItem = incoming[index] || {};
+    return {
+      ...fallbackItem,
+      ...incomingItem,
+      title: incomingItem.title || fallbackItem.title,
+      description: incomingItem.description || fallbackItem.description,
+      stat: incomingItem.stat || fallbackItem.stat,
+      label: incomingItem.label || fallbackItem.label,
+      alt: incomingItem.alt || fallbackItem.alt,
+      src: incomingItem.src || fallbackItem.src,
+      type: incomingItem.type || fallbackItem.type,
+    };
+  });
+}
 
 export default function WhyChooseSection({ content }: { content?: HomePageContent }) {
   const { locale } = useSiteLocale();
@@ -69,10 +193,10 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
 
   // prefer CMS-provided `why` if available
   const cmsWhy = (content && (content as any).why) || null;
-  const benefits = cmsWhy?.benefits || DEFAULT_BENEFITS[locale as "id" | "en"];
-  const fallbackWhy = DEFAULT_HOME_CONTENT.why?.id;
-  const qualityMedia = cmsWhy?.qualityMedia || fallbackWhy?.qualityMedia || [];
-  const logisticsMedia = cmsWhy?.logisticsMedia || fallbackWhy?.logisticsMedia || [];
+  const localeKey = (locale as "id" | "en") || "en";
+  const benefits = mergeByIndex(DEFAULT_BENEFITS[localeKey] as any[], cmsWhy?.benefits);
+  const qualityMedia = mergeByIndex(DEFAULT_MEDIA[localeKey].qualityMedia as any[], cmsWhy?.qualityMedia);
+  const logisticsMedia = mergeByIndex(DEFAULT_MEDIA[localeKey].logisticsMedia as any[], cmsWhy?.logisticsMedia);
   const successSlides = (content && (content as any).success && (content as any).success.slides) || null;
   const successStats = (content && (content as any).success && (content as any).success.stats) || null;
 
@@ -101,9 +225,7 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
           </h2>
           <p className="mx-auto max-w-2xl text-base text-stone-600 sm:text-lg">{cmsWhy?.description || t.description}</p>
         </div>
-        {/* Kualitas & Proses and Logistik & Armada galleries removed per request. */}
-
-        <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
+        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:gap-6">
           {benefits.map((b: any, i: number) => (
             <div key={i} className="group rounded-3xl border border-stone-200 bg-gradient-to-br from-white to-emerald-50/30 p-6 shadow-sm">
               <div className="mb-4 flex items-start justify-between">
@@ -125,7 +247,7 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
                           {m.type === "video" ? (
                             m.label === "Optical sorting" ? (
                               <video
-                                src={m.src}
+                                src={encodeURI(m.src)}
                                 width={240}
                                 height={160}
                                 className="object-cover block"
@@ -137,7 +259,7 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
                               />
                             ) : (
                               <video
-                                src={m.src}
+                                src={encodeURI(m.src)}
                                 width={240}
                                 height={160}
                                 className="object-cover block"

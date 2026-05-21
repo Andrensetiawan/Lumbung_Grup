@@ -48,7 +48,7 @@ export default function VideoPlayer({ videos = defaultVideos, layoutMode = "2" }
           preload="metadata"
           onEnded={handleVideoEnd}
         >
-          <source src={activeVideo} type="video/mp4" />
+          <source src={encodeURI(activeVideo)} type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
       </div>
@@ -71,7 +71,7 @@ export default function VideoPlayer({ videos = defaultVideos, layoutMode = "2" }
             loop
             preload="metadata"
           >
-            <source src={videoUrl} type="video/mp4" />
+            <source src={encodeURI(videoUrl)} type="video/mp4" />
             Your browser does not support HTML5 video.
           </video>
         </div>

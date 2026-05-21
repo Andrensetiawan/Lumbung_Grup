@@ -2,7 +2,8 @@ import type { HomePageContent } from "./data/home";
 
 type HomeLocale = "id" | "en";
 
-const exactTranslationMap: Record<string, string> = {
+const exactTranslationMapIdToEn: Record<string, string> = {
+  "Kualitas Tersertifikasi Sejak 2020": "Certified Quality Since 2020",
   "Mitra Utama": "Key Partners",
   Provinsi: "Provinces",
   Kepuasan: "Satisfaction",
@@ -21,6 +22,10 @@ const exactTranslationMap: Record<string, string> = {
   "Melayani hotel chains, restaurant groups, dan modern retail dengan standar QC internasional, logistik nasional, dan konsultasi gratis.":
     "Serving hotel chains, restaurant groups, and modern retail with international QC standards, nationwide logistics, and free consultation.",
 };
+
+const exactTranslationMapEnToId: Record<string, string> = Object.fromEntries(
+  Object.entries(exactTranslationMapIdToEn).map(([source, target]) => [target, source])
+);
 
 const replacementRules: Array<[RegExp, string]> = [
   [/\bdan\b/gi, "and"],
@@ -46,7 +51,7 @@ function translateHomeTextToEnglish(text: string): string {
   }
 
   const normalizedInput = normalize(text);
-  for (const [source, target] of Object.entries(exactTranslationMap)) {
+  for (const [source, target] of Object.entries(exactTranslationMapIdToEn)) {
     if (normalize(source) === normalizedInput) {
       return target;
     }
@@ -60,47 +65,61 @@ function translateHomeTextToEnglish(text: string): string {
   return output;
 }
 
-export function localizeHomeContent(content: HomePageContent, locale: HomeLocale): HomePageContent {
-  if (locale === "id") {
-    return content;
+function translateHomeTextToIndonesian(text: string): string {
+  if (!text.trim()) {
+    return text;
   }
+
+  const normalizedInput = normalize(text);
+  for (const [source, target] of Object.entries(exactTranslationMapEnToId)) {
+    if (normalize(source) === normalizedInput) {
+      return target;
+    }
+  }
+
+  return text;
+}
+
+export function localizeHomeContent(content: HomePageContent, locale: HomeLocale): HomePageContent {
+  const translate = locale === "id" ? translateHomeTextToIndonesian : translateHomeTextToEnglish;
+  const whySource = locale === "id" ? (content.why as any)?.id : (content.why as any)?.en;
 
   return {
     ...content,
     hero: {
       ...content.hero,
-      badge: translateHomeTextToEnglish(content.hero.badge),
-      titleMain: translateHomeTextToEnglish(content.hero.titleMain),
-      titleSub: translateHomeTextToEnglish(content.hero.titleSub),
-      subheading: translateHomeTextToEnglish(content.hero.subheading),
-      description: translateHomeTextToEnglish(content.hero.description),
+      badge: translate(content.hero.badge),
+      titleMain: translate(content.hero.titleMain),
+      titleSub: translate(content.hero.titleSub),
+      subheading: translate(content.hero.subheading),
+      description: translate(content.hero.description),
     },
     stats: content.stats.map((stat) => ({
       ...stat,
-      label: translateHomeTextToEnglish(stat.label),
+      label: translate(stat.label),
     })),
     credentials: content.credentials.map((credential) => ({
       ...credential,
-      label: translateHomeTextToEnglish(credential.label),
+      label: translate(credential.label),
     })),
     quality: {
       ...content.quality,
-      title: translateHomeTextToEnglish(content.quality.title),
-      description: translateHomeTextToEnglish(content.quality.description),
+      title: translate(content.quality.title),
+      description: translate(content.quality.description),
     },
     why: content.why
       ? {
-          ...(content.why.en || {}),
-          badge: translateHomeTextToEnglish((content.why as any).id?.badge || "") || "",
-          title: translateHomeTextToEnglish((content.why as any).id?.title || "") || "",
-          description: translateHomeTextToEnglish((content.why as any).id?.description || "") || "",
-          benefits: ((content.why as any).id?.benefits || []).map((b: any) => ({
-            title: translateHomeTextToEnglish(b.title || ""),
-            description: translateHomeTextToEnglish(b.description || ""),
-            stat: translateHomeTextToEnglish(b.stat || ""),
+          ...(whySource || {}),
+          badge: translate(whySource?.badge || "") || "",
+          title: translate(whySource?.title || "") || "",
+          description: translate(whySource?.description || "") || "",
+          benefits: (whySource?.benefits || []).map((b: any) => ({
+            title: translate(b.title || ""),
+            description: translate(b.description || ""),
+            stat: translate(b.stat || ""),
           })),
-          qualityMedia: (content.why as any).id?.qualityMedia || [],
-          logisticsMedia: (content.why as any).id?.logisticsMedia || [],
+          qualityMedia: whySource?.qualityMedia || [],
+          logisticsMedia: whySource?.logisticsMedia || [],
         }
       : undefined,
   };

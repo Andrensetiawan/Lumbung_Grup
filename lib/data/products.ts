@@ -193,7 +193,7 @@ export function buildProductInquiryLink(productName = "[Product Name]", locale: 
     locale === "id"
       ? `Halo Admin! \u{1F44B}\u{1F3FB}\n\nSaya tertarik membeli produk ${productName}. Boleh dibantu untuk proses pemesanannya?`
       : `Hello Admin! \u{1F44B}\u{1F3FB}\n\nI'm interested in purchasing product ${productName}. Could you help with the ordering process?`;
-  return `https://wa.me/6285811848112?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/6285889006572?text=${encodeURIComponent(message)}`;
 }
 
 export const CONTACT_WHATSAPP = buildProductInquiryLink();

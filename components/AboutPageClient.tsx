@@ -76,7 +76,7 @@ export default function AboutPageClient({ content }: Props) {
             </div>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="space-y-6">
+            <div className="order-1 space-y-6 lg:order-none">
               <div className="relative h-80 overflow-hidden rounded-[2rem] shadow-2xl">
                 <Image
                   src={primaryImage}
@@ -93,7 +93,7 @@ export default function AboutPageClient({ content }: Props) {
                 </p>
               </div>
             </div>
-            <div className="relative hidden overflow-hidden rounded-[2rem] shadow-2xl lg:block lg:mt-12" style={{ aspectRatio: "16/9", minHeight: "250px" }}>
+            <div className="relative order-2 overflow-hidden rounded-[2rem] shadow-2xl lg:order-none lg:mt-12" style={{ aspectRatio: "16/9", minHeight: "180px" }}>
               <video
                 src="/Optical sorting.mp4"
                 className="h-full w-full object-cover animate-fade-in"

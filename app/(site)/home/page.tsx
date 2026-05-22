@@ -37,7 +37,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "NMP Procurement Desk",
   url: `${siteUrl}/home`,
-  telephone: "+62-858-1184-8112",
+  telephone: "+62-858-8900-6572",
   priceRange: "$$$",
   servesCuisine: ["Japanese", "Indonesian"],
   areaServed: "Indonesia",

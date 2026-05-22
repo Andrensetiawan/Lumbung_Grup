@@ -341,7 +341,7 @@ export default function WhyChooseSection({ content }: { content?: HomePageConten
             <Link href="/contact" className="inline-block rounded-full bg-emerald-950 px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.28em] text-white transition hover:bg-emerald-900">
               {t.scheduleConsultation}
             </Link>
-            <a href={locale === "id" ? "https://wa.me/6285811848112?text=Halo%20NMP%2C%20saya%20ingin%20diskusi%20procurement" : "https://wa.me/6285811848112?text=Hello%20NMP%2C%20I%20would%20like%20to%20discuss%20procurement"} target="_blank" className="inline-block rounded-full border-2 border-emerald-950 px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-950 transition hover:bg-emerald-100">
+            <a href={locale === "id" ? "https://wa.me/6285889006572?text=Halo%20NMP%2C%20saya%20ingin%20diskusi%20procurement" : "https://wa.me/6285889006572?text=Hello%20NMP%2C%20I%20would%20like%20to%20discuss%20procurement"} target="_blank" className="inline-block rounded-full border-2 border-emerald-950 px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-950 transition hover:bg-emerald-100">
               {t.whatsappNow}
             </a>
           </div>

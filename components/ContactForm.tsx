@@ -73,7 +73,7 @@ export default function ContactForm() {
         ? `Halo Admin! 👋\n\nSaya ingin inquiry dari website. Berikut detail saya:\n\nNama Perusahaan: ${companyName}\nNama Kontak: ${contactName}\nJabatan: ${jobTitle}\nEmail: ${email}\nNomor Telepon: ${phone}\nTipe Bisnis: ${businessType}\nEstimasi Kebutuhan/Bulan: ${monthlyVolume}\nProduk Diminati: ${productText}\nKebutuhan Spesifik: ${specificNeeds}`
         : `Hello Admin! 👋\n\nI would like to submit an inquiry from your website. Here are my details:\n\nCompany Name: ${companyName}\nContact Name: ${contactName}\nJob Title: ${jobTitle}\nEmail: ${email}\nPhone Number: ${phone}\nBusiness Type: ${businessType}\nEstimated Monthly Volume: ${monthlyVolume}\nInterested Products: ${productText}\nSpecific Needs: ${specificNeeds}`;
 
-    const whatsappLink = `https://wa.me/6285811848112?text=${encodeURIComponent(message)}`;
+    const whatsappLink = `https://wa.me/6285889006572?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, "_blank");
   };
 

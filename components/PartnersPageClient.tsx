@@ -80,8 +80,8 @@ export default function PartnersPageClient({ partners, content }: Props) {
           <a
             href={
               locale === "id"
-                ? "https://wa.me/6285811848112?text=Halo%20NMP%2C%20saya%20ingin%20diskusi%20kemitraan"
-                : "https://wa.me/6285811848112?text=Hello%20NMP%2C%20I%20would%20like%20to%20discuss%20partnership"
+                ? "https://wa.me/6285889006572?text=Halo%20NMP%2C%20saya%20ingin%20diskusi%20kemitraan"
+                : "https://wa.me/6285889006572?text=Hello%20NMP%2C%20I%20would%20like%20to%20discuss%20partnership"
             }
             target="_blank"
             rel="noreferrer"

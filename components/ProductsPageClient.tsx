@@ -27,7 +27,7 @@ const copy = {
     privateLabel: "Private Label Ready",
     privateLabelDesc: "Konsultasi gratis untuk white-label dan custom packaging",
     ctaDesc: "Hubungi Procurement Desk untuk quotation volume besar dan kerja sama eksklusif",
-    whatsapp: "WhatsApp: +62 858-1184-8112",
+    whatsapp: "WhatsApp: +62 858-8900-6572",
   },
   en: {
     badge: "Product Catalog",
@@ -43,7 +43,7 @@ const copy = {
     privateLabel: "Private Label Ready",
     privateLabelDesc: "Free consultation for white-label and custom packaging",
     ctaDesc: "Contact our Procurement Desk for high-volume quotations and exclusive partnerships",
-    whatsapp: "WhatsApp: +62 858-1184-8112",
+    whatsapp: "WhatsApp: +62 858-8900-6572",
   },
 } as const;
 
